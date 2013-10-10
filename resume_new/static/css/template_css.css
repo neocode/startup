@@ -1,0 +1,56 @@
+body {
+     background-color: #FFFFFF;
+     text-align: center;
+}
+h1 {
+    font-family: verdana,arial,sans-serif;
+    font-size:18px;
+    color:red;
+}
+input[type="submit"] {
+    color: #333333;
+}
+
+strong {
+    font-family: verdana,arial,sans-serif;
+    font-size:18px;
+    color:#333333;
+}
+
+input[type=text] {
+    padding: 2px;
+    border: 1px solid #666666;
+    background: #dedede;
+    width: 300px;
+    -webkit-appearance: none;
+}
+
+input[type="text"]:focus {
+    border: 1px solid red;
+    background: #ffffff;
+}
+
+select {
+    border: 1px solid #666666;
+    background: #dedede;
+}
+
+select:focus{
+    border: 1px solid red;
+}
+
+textarea {
+    border-color: #666666;
+    background: #dedede;
+    border-style: solid;
+    border-width: thin;
+    width: 300px;
+    height: 150px;
+    resize: none;
+    padding: 2px;
+}
+
+textarea:focus {
+    border: 1px solid red;
+    background: #ffffff;
+}

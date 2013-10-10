@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Form</title>
+<link rel="stylesheet" href="{{ STATIC_URL }}css/template_css.css"/>
+<link rel="stylesheet" href="{{ STATIC_URL }}css/style.css"/>
+</head>
+
+<body>
+
+<script type="text/javascript">
+    function check_tillnow(tillnow){
+        document.getElementById('id_job_finish_day').disabled = tillnow.checked;
+        document.getElementById('id_job_finish_month').disabled = tillnow.checked;
+        document.getElementById('id_job_finish_year').disabled = tillnow.checked;
+    }
+
+    function ShowHide1()
+    {
+          var i, a = [1, 2, 3, 4, 5, 6, 7, 8]
+          for (i in a)
+          {
+          var s = "s" + i;
+          if(document.getElementById(s).style.display == 'none')
+                 {
+                     document.getElementById(s).style.display='block';
+                     return;
+                 };
+          }
+    }
+
+    function ShowHide(divId)
+    {
+                document.getElementById(divId).style.display = 'none';
+    }
+
+    function Del(obj){
+        if (obj.value == 'Add')
+        {
+            obj.value = 'Del';
+        }
+        else
+        {
+            obj.value = 'Add';
+        }
+    }
+
+</script>
+
+<h1 align="center">We'll help you to find a...</h1>
+
+    {% if form.errors %}
+        <p style="color: red;">
+            Please correct the error{{ form.errors|pluralize }} below.
+        </p>
+    {% endif %}
+<img src="{{ STATIC_URL }}images/hi.jpg" alt="Hi!" />
+    <table class="gridtable" id="table_form">
+    <form action="" method="post">
+        {% csrf_token %}
+            <tr><th colspan="2" bgcolor="#808080">Personal information:</th></tr>
+            {{ form1.as_table }}
+            <tr><th colspan="2" bgcolor="#808080">Education:</th></tr>
+            {{ form2_1.as_table }}
+            <tr><th>Years of education:</th><td>{{ form2_2.graduation_start }}{{ form2_2.graduation_finish }}</td></tr>
+            {{ form2_3.as_table }}
+            <tr><th colspan="2" bgcolor="#808080">Information about the latest job:</th></tr>
+            {{ form3.as_table }}
+            <tr><th colspan="2" bgcolor="#808080">Earnings:</th></tr>
+            {{ form4.as_table }}
+            <tr><th colspan="2" bgcolor="#808080">Your skills:</th></tr>
+            {{ form5.as_table }}
+            <tr><th colspan="2" bgcolor="#808080">Language skills:</th></tr>
+            <tr><th>Choose your languages:</th>
+                <td>
+                    <div id="s0">
+                        {{ form6.select_lang1 }}{{ form6.select_level1 }}
+                        <input id="add_lang1" onclick="ShowHide1();" type="button" style="width: 40px" value="Add"/>
+                    </div>
+                    <div id="s1" style="display:none">
+                        {{ form6.select_lang2 }}{{ form6.select_level2 }}
+                        <input id="add_lang2" onclick="ShowHide('s1');" type="button" style="width: 40px" value="Del"/>
+                    </div>
+                    <div id="s2" style="display:none">
+                        {{ form6.select_lang3 }}{{ form6.select_level3 }}
+                        <input id="add_lang3" onclick="ShowHide('s2');" type="button" style="width: 40px" value="Del"/>
+                    </div>
+                    <div id="s3" style="display:none">
+                        {{ form6.select_lang4 }}{{ form6.select_level4 }}
+                        <input id="add_lang4" onclick="ShowHide('s3');" type="button" style="width: 40px" value="Del"/>
+                    </div>
+                    <div id="s4" style="display:none">
+                        {{ form6.select_lang5 }}{{ form6.select_level5 }}
+                        <input id="add_lang5" onclick="ShowHide('s4');" type="button" style="width: 40px" value="Del"/>
+                    </div>
+                    <div id="s5" style="display:none">
+                        {{ form6.select_lang6 }}{{ form6.select_level6 }}
+                        <input id="add_lang6" onclick="ShowHide('s5');" type="button" style="width: 40px" value="Del"/>
+                    </div>
+                    <div id="s6" style="display:none">
+                        {{ form6.select_lang7 }}{{ form6.select_level7 }}
+                        <input id="add_lang7" onclick="ShowHide('s6');" type="button" style="width: 40px" value="Del"/>
+                    </div>
+                    <div id="s7" style="display:none">
+                        {{ form6.select_lang8 }}{{ form6.select_level8 }}
+                        <input id="add_lang8" onclick="ShowHide('s7');" type="button" style="width: 40px" value="Del"/>
+                    </div>
+
+                </td>
+            </tr>
+            <tr><th colspan="2" bgcolor="#808080">Enter additional information here:</th></tr>
+            {{ form7.as_table }}
+            <tr><th colspan="2" bgcolor="#dedede"><input type="submit" value="Send my resume"></th></tr>
+
+
+    </form>
+    </table>
+<p>
+  <strong>Analysis result: {{ result }}</strong>  
+</p>
+</body>
+</html>
